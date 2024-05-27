@@ -1,6 +1,8 @@
 import traceback
 from flask import request, jsonify, session
 from models.user import User
+import jwt 
+import datetime
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -22,12 +24,15 @@ class UserController:
             data = request.get_json()
             user = User.find_user(data['username'])
             if user and User.verify_password(user['password'], data['password']):
+                print("--", user['username'])
+                session['username'] = user['username']
                 # Generate JWT token
                 token = jwt.encode({'username': data['username'], 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}, 'enpointhsgs')
                 return jsonify({"message": "Login successful","token": token}), 200
             return jsonify({"message": "Invalid credentials"}), 401
         except Exception as e:
             return jsonify({"message": str(e)}), 500
+        
         
     @staticmethod
     def register():
