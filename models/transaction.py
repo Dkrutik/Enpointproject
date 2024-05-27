@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from flask_bcrypt import Bcrypt
 from config import Config
+from datetime import datetime
 
 bcrypt = Bcrypt()
 
@@ -14,6 +15,7 @@ class Transaction:
     
     @staticmethod
     def get_transactions(username):
+        # print(list(db.transactions.find({"username": username})))
         return list(db.transactions.find({"username": username}))
     
     @staticmethod
