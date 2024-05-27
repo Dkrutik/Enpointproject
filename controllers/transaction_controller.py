@@ -4,9 +4,11 @@ from models.transaction import Transaction
 class TransactionController:
     @staticmethod
     def deposit():
+        print("dddddd--", session)
         if 'username' not in session:
             return jsonify({"message": "Not logged in"}), 401
         data = request.get_json()
+        print("kkkk",data)
         Transaction.create_transaction(session['username'], data['amount'], 'deposit')
         return jsonify({"message": "Deposit successful"}), 200
     
@@ -33,4 +35,10 @@ class TransactionController:
         if 'username' not in session:
             return jsonify({"message": "Not logged in"}), 401
         transactions = Transaction.get_transactions(session['username'])
-        return jsonify({"transactions": transactions}), 200
+        sanitized_data = [
+        {key: value for key, value in entry.items() if key != '_id'}
+        for entry in transactions]
+        return jsonify({"data": sanitized_data}), 200
+        # return jsonify({"transactions": transactions}), 200
+
+
