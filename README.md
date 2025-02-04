@@ -1,11 +1,12 @@
 
 !) project Dir:-
 cd Enpointproject/
+
 !!)Install the Project Dependencies:
 If the project has a requirements.txt file (which is common for Flask or Python projects), you can install the dependencies by running:
 pip install -r requirements.txt
-!!!)Run the Flask Application:
 
+!!!)Run the Flask Application:
 If it's a Flask project, you can run it using the following:
 python app.py 
 
