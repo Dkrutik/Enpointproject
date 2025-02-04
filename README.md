@@ -1,3 +1,14 @@
+
+!) project Dir:-
+cd Enpointproject/
+!!)Install the Project Dependencies:
+If the project has a requirements.txt file (which is common for Flask or Python projects), you can install the dependencies by running:
+pip install -r requirements.txt
+!!!)Run the Flask Application:
+
+If it's a Flask project, you can run it using the following:
+python app.py 
+
 1) user are regiser :-![Screenshot 2024-05-26 160937](https://github.com/Dkrutik/Enpointproject/assets/138380131/65c141f3-991c-4553-a8c4-0d5182a1d962)
     urls:- http://127.0.0.1:5000/user/register
 3) user login :- ![Screenshot 2024-05-26 160955](https://github.com/Dkrutik/Enpointproject/assets/138380131/a4cbe91c-cb47-4ef0-9a7d-63e2d7f730da)
